@@ -15,16 +15,20 @@
             <button type="submit" class="btn btn2">Submit</button>
         </form>
     </div>
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyFiUJR7KMm1FLH56NyLrp7EHPQ-LODGrCCTq9jGy4Cwl3pe8hza_nBoTLJZ8w9FtQ/exec'
-    const form = document.forms['submit-to-google-sheet']
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-    })
-</script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyFiUJR7KMm1FLH56NyLrp7EHPQ-LODGrCCTq9jGy4Cwl3pe8hza_nBoTLJZ8w9FtQ/exec';
+        const form = document.forms['submit-to-google-sheet'];
+    
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    console.log('Success!', response);
+                    alert('Form submitted successfully!');
+                    location.reload(); // Refresh the page
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
 </body>
 </html>
